@@ -1,14 +1,16 @@
 import { PrismaClient } from "@prisma/client";
+import { Request,Response } from "express";
+import { Post } from "../queryTypes.js";
 const prisma = new PrismaClient();
 
 class PostController{
-    async createPost(req,res){
-        const data=req.body
+    async createPost(req:Request,res:Response){
+        const data=req.body 
         const post=await prisma.post.create({data})
         res.json(post)
     }
 
-    async deletePost(req,res){
+    async deletePost(req:Request,res:Response){
         try {
         const id = +req.params.id
         const post =await prisma.post.delete({where:{id:id}})
@@ -20,7 +22,8 @@ class PostController{
         
     }
 
-    async getPostsByUserId(req,res){
+    async getPostsByUserId(req:Request,res:Response){
+        if(!req.query.id) return
         const id = +req.query.id
         const posts= await prisma.post.findMany({where:{userId:id } })
         console.log(posts)

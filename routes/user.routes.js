@@ -1,6 +1,8 @@
 import { Router } from 'express'
+
+import userController from '../controllers/UserController.ts'
+
 const userRouter = new Router()
-import userController from '../controllers/UserController.js'
 
 userRouter.post('/user',userController.createUser)
 userRouter.get('/user',userController.getUsers)
