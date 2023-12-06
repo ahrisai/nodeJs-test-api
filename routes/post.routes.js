@@ -6,8 +6,8 @@ postRouter.post('/post',postController.createPost)
 postRouter.delete('/post/:id',postController.deletePost)
 postRouter.get('/post',postController.getPostsByUserId)
 
-console.log()
 
+console.log('da')
 
 
 
