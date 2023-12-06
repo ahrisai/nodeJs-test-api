@@ -1,4 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 class UserController{
@@ -34,4 +34,6 @@ class UserController{
     }
 }
 
-module.exports=new UserController()
+const userController = new UserController()
+
+export default userController

@@ -1,4 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 class PostController{
@@ -28,4 +28,8 @@ class PostController{
     }
 }
 
-module.exports=new PostController()
+const postController=new PostController()
+
+export default postController
+
+

@@ -1,14 +1,10 @@
-const Router=require('express')
+import { Router } from 'express'
 const postRouter = new Router()
-const postController=require('../controllers/PostController')
-
+import postController from '../controllers/PostController.js'
 postRouter.post('/post',postController.createPost)
 postRouter.delete('/post/:id',postController.deletePost)
 postRouter.get('/post',postController.getPostsByUserId)
 
 
-console.log('da')
+export default postRouter
 
-
-
-module.exports=postRouter

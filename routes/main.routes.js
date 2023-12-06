@@ -1,4 +1,4 @@
-const userRouter=require('./user.routes')
-const postRouter=require('./post.routes')
+// const userRouter=require('./user.routes')
+// const postRouter=require('./post.routes')
 
-module.exports={...userRouter,...postRouter}
+// module.exports={...userRouter,...postRouter}
