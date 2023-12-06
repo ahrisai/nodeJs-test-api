@@ -1,14 +1,14 @@
 import { PrismaClient } from "@prisma/client";
 import { Request,Response } from "express";
-
 const prisma = new PrismaClient();
 
 class UserController{
     async createUser(req:Request,res:Response){
         const user=req.body
         const newUser = await prisma.user.create({data:user})
-        res.setHeader('set-cookie','foo=bar')
-       res.end()
+        
+         res.cookie('user', JSON.stringify(newUser),{sameSite:'none', secure:true,httpOnly:false,maxAge:360000,});
+       res.send()
     }   
     async getUsers(req:Request,res:Response){
     const users = await prisma.user.findMany();
