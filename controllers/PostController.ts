@@ -6,14 +6,14 @@ const prisma = new PrismaClient();
 class PostController{
     async createPost(req:Request,res:Response){
         const data=req.body 
-        const post=await prisma.post.create({data})
+        const post=await prisma.posts.create({data})
         res.json(post)
     }
 
     async deletePost(req:Request,res:Response){
         try {
         const id = +req.params.id
-        const post =await prisma.post.delete({where:{id:id}})
+        const post =await prisma.posts.delete({where:{id:id}})
         res.json(post)
         } catch (error) {
             res.status(404)
@@ -25,7 +25,7 @@ class PostController{
     async getPostsByUserId(req:Request,res:Response){
         if(!req.query.id) return
         const id = +req.query.id
-        const posts= await prisma.post.findMany({where:{userId:id } })
+        const posts= await prisma.posts.findMany({where:{userId:id } })
         console.log(posts)
         res.json(posts)
     }

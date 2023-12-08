@@ -10,19 +10,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model User{
+  id Int @id @default(autoincrement())
+  name String
+  password String
+}
+
+
+
+model Users {
   id    Int    @id @default(autoincrement())
   name  String
   age   Int
-  posts    Post[] 
+  posts    Posts[] 
 }
 
-model Post{
+model Posts{
   id    Int    @id @default(autoincrement())
   userId    Int
   title String
   content String
   description String?
-  user      User     @relation(fields: [userId], references: [id],onDelete: Cascade)
+  user      Users     @relation(fields: [userId], references: [id],onDelete: Cascade)
 }
 
